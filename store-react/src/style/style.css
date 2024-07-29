@@ -1,0 +1,165 @@
+/* =====================================> Style my App <===================================== */
+:root {
+    --white-color: #FFFFFF;
+    --black-color: #151515;
+    --gray-color: #F5F5F5;
+    --sage-color: #ADBC9F;
+    --sage-color-dark: #436850;
+    --red-color: #C80036;
+}
+
+/* =====================================> bg body <===================================== */
+body {
+    background-color: var(--gray-color);
+}
+
+/* =====================================> Class Navigasi <===================================== */
+.navigasi{
+    background-color: var(--sage-color);
+}
+
+/* =====================================> Class Home <===================================== */
+.clas-home {
+    background-image: url('../assets/img/bg-home.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* =====================================> Class Product <===================================== */
+.clas-product {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+}
+
+.card img {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.card-title {
+    font-size: 17px;
+}
+.card-text{
+    font-size: 14px;
+    text-align: justify;
+}
+
+/* =====================================> Class Category <===================================== */
+.clas-category {
+    margin-bottom: 5rem;
+}
+
+.card-category .anakcard-category{
+    cursor: pointer;
+}
+.card-category .anakcard-category:hover{
+    /* buatkan shadow tipis */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    color: var(--black-color);
+    border: none;
+    transition: 0.2s;
+    
+}
+
+/* =====================================> Class Cart <===================================== */
+.cart-number {
+    position: absolute;
+    top: 11px;
+    right: 60px;
+    background-color: var(--red-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+}
+.number{
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin: auto;
+}
+
+.cart-list{
+    background-color: var(--white-color);
+    width: 400px;
+    max-width: 400px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    margin-left: -200px;
+}
+
+/* =====================================> Class Cartpage <===================================== */
+.cartpage-cardheader {
+    border-radius: 0;
+}
+.cartpage-cardmenu{
+    margin-top: 3rem;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.cartpage-cardmenu-body .card-text{
+   margin-top: auto;
+   margin-bottom: auto;
+}
+/* =====================================> Class Cartpage produk<===================================== */
+.cartpage-cardproduk{
+    margin-top: 1rem;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.cartpage-cardproduk-body .img-produk{
+    width: 100px;
+}
+/* =====================================> Class Cartpage chekout<===================================== */
+.cartpage-cardcheckout{
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* =====================================> Class HEADER<===================================== */
+.clas-header{
+    background-color: var(--sage-color);
+    padding: 2px;
+}
+.header-akun-img{
+    width: 30px;
+}
+.header-socialmedia .header-socialmedia-icon{
+    font-size: 20px;
+}
+
+/* =====================================> Class BADGE di Navigasi<===================================== */
+.position-relative {
+    position: relative;
+  }
+  
+  .position-absolute {
+    position: absolute;
+  }
+  
+  .top-0 {
+    top: 0;
+  }
+  
+  .start-100 {
+    right: 0;
+  }
+  
+  .translate-middle {
+    transform: translate(50%, -50%);
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+  }
+
+  /* =====================================> Class Product Detail<===================================== */
+  .productdetail-img{
+    width: 50%;
+  }
+  
