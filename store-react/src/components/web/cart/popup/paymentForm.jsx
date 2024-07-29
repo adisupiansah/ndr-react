@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useLocation } from 'react-router-dom';
 import { Rupiah } from "../../../../utils/FormatRP/Rupiah";
@@ -11,6 +11,9 @@ const paymentForm = () => {
     const location = useLocation()
     const {totalAmount} = location.state || {totalAmount:0}
 
+    // state token
+    const [token, setToken] = useState('');
+
     const handleProsess = async (e) => {
         e.preventDefault()
         const data = {
@@ -18,22 +21,61 @@ const paymentForm = () => {
             orderId: orderId,
             totalAmount: totalAmount
         }
-
         const config = {
             headers: {
                 "Content-Type": "application/json",
-
             }
         }
         try {
             const response = await axios.post('http://localhost:5000/api/payment/process-transaction', data, config)
 
-            console.log(response)
+            setToken(response.data.token)
         } catch (error) {
             console.error("anak anjeng", error);
         }
     }
 
+    useEffect(() => {
+        if (token) {
+            window.snap.pay(token, {
+                onSuccess: (result) => {
+                    localStorage.setItem("Pembayaran", JSON.stringify(result))
+                    setToken("");
+                },
+                onPending: (result) => {
+                    localStorage.setItem("Pembayaran", JSON.stringify(result))
+                    setToken("");
+                }, 
+                onError: (error) => {
+                    console.log("ada error di useEffect",error)
+                    setToken("");
+                },
+                onClose: () => {
+                    console.log("anda belum menyelesaikan pembayaran");
+                    setToken("");
+                }
+            })
+            setName("");
+            setOrderId("");
+        }
+    }, [token]);
+
+    useEffect(() => {
+        const urlMidtrans = 'https://app.sandbox.midtrans.com/snap/snap.js';
+
+        let scriptTag = document.createElement('script');
+        scriptTag.src = urlMidtrans;
+
+        const midtransClientKey = 'SB-Mid-client-eDfsQTa-YuStaNqi'
+        scriptTag.setAttribute('data-client-key', midtransClientKey);
+
+        document.body.appendChild(scriptTag);
+
+        return () => {
+            document.body.removeChild(scriptTag);
+        }
+
+    }, [])
 
 
   return (
